@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jonathan Corbett</title>
+<meta name="description" content="Engineering leadership, agentic coding, and shipping software in regulated environments.">
+
+<!-- TODO before launch: set the real domain in these three, then delete this comment. -->
+<meta property="og:title" content="Jonathan Corbett">
+<meta property="og:description" content="Engineering leadership, agentic coding, and shipping software in regulated environments.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://example.com/">
+
+<style>
+:root{
+  --ink:#0b0d10; --ink-2:#12161b; --ink-3:#1a2027; --line:#2a333d;
+  --fg:#dfe5ea; --fg-dim:#8d9aa8; --fg-faint:#5d6a78;
+  --amber:#e8a33d; --cyan:#4fd1c5;
+  --mono:"SF Mono","Menlo","IBM Plex Mono",ui-monospace,monospace;
+  --serif:"Iowan Old Style","Charter","Palatino",Georgia,serif;
+  --disp:"Futura","Avenir Next Condensed","Avenir Next",Optima,sans-serif;
+}
+html[data-theme="light"]{
+  --ink:#f2efe8; --ink-2:#fbf9f5; --ink-3:#eae5db; --line:#cfc7b8;
+  --fg:#1a1815; --fg-dim:#5c5648; --fg-faint:#8a8272;
+  --amber:#a86a10; --cyan:#127a70;
+}
+@media (prefers-color-scheme: light){
+  html:not([data-theme]){color-scheme:light}
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--ink); color:var(--fg); font-family:var(--serif);
+  font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px; background-position:-1px -1px;}
+body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(ellipse at 85% -10%, rgba(79,209,197,.10), transparent 55%),
+             radial-gradient(ellipse at 0% 100%, rgba(232,163,61,.07), transparent 50%);}
+.wrap{position:relative; z-index:1; max-width:720px; margin:0 auto; padding:0 24px 120px}
+
+header{border-bottom:2px solid var(--fg); padding:72px 0 20px; display:flex;
+  justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap}
+h1{font-family:var(--disp); font-size:clamp(32px,7vw,58px); line-height:.95; margin:0;
+  letter-spacing:-.02em; text-transform:uppercase}
+h1 em{font-style:normal; color:var(--cyan); display:block}
+button.theme{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  background:transparent; color:var(--fg-faint); border:1px solid var(--line); padding:7px 11px;
+  cursor:pointer; white-space:nowrap}
+button.theme:hover{color:var(--cyan); border-color:var(--cyan)}
+
+.lede{font-size:21px; line-height:1.5; color:var(--fg-dim); margin:36px 0 0; max-width:34em}
+.lede strong{color:var(--fg); font-weight:normal}
+
+h2{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--amber); margin:64px 0 18px; padding-bottom:7px; border-bottom:1px solid var(--line)}
+p{margin:0 0 16px; max-width:36em}
+a{color:var(--cyan); text-decoration:none; border-bottom:1px solid transparent}
+a:hover{border-bottom-color:var(--cyan)}
+
+ul.plain{list-style:none; padding:0; margin:0}
+ul.plain li{padding:16px 0; border-bottom:1px solid var(--line)}
+ul.plain li:last-child{border-bottom:none}
+.post-date{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--fg-faint); display:block; margin-bottom:5px}
+.post-title{font-family:var(--disp); font-size:19px; letter-spacing:.01em}
+
+.empty{border:1px dashed var(--line); padding:24px; color:var(--fg-faint); font-size:15px;
+  background:var(--ink-2)}
+.empty p{margin:0; max-width:none}
+
+.sub{border:1px solid var(--line); background:var(--ink-2); padding:24px}
+.sub p{margin:0 0 14px; font-size:15.5px; color:var(--fg-dim)}
+.sub form{display:flex; gap:9px; flex-wrap:wrap}
+.sub input[type=email]{flex:1 1 220px; background:var(--ink); border:1px solid var(--line);
+  color:var(--fg); font-family:var(--serif); font-size:15px; padding:11px 13px}
+.sub input[type=email]:focus{outline:none; border-color:var(--cyan)}
+.sub button{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--cyan); color:var(--ink); border:none; padding:11px 20px; cursor:pointer}
+.sub button:hover{opacity:.85}
+.sub .note{font-size:12.5px; color:var(--fg-faint); margin:12px 0 0}
+
+footer{margin-top:80px; padding-top:18px; border-top:1px solid var(--line);
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--fg-faint); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+footer a{color:var(--fg-faint)}
+footer a:hover{color:var(--cyan)}
+
+/* Marks content that still needs a human decision. Delete the rule and the
+   class together once nothing on the page carries it. */
+.todo{outline:1px dashed var(--amber); outline-offset:3px}
+.todo::after{content:" ← TODO"; font-family:var(--mono); font-size:9.5px; color:var(--amber);
+  letter-spacing:.1em; vertical-align:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Jonathan<em>Corbett</em></h1>
+  <button class="theme" onclick="tg()">theme</button>
+</header>
+
+<p class="lede">
+  I lead engineering teams building software where <strong>being wrong is
+  expensive</strong> — regulated, audited, high-consequence environments. Lately
+  I've been rolling agentic coding across those teams and writing about the parts
+  nobody warns you about.
+</p>
+
+<h2>What I write about</h2>
+<p>
+  Multi-agent development in real organisations, not demos: what code review
+  becomes when agents write half of it, how you govern spend across teams, where
+  the failure modes actually are, and what QA means when the author isn't human.
+</p>
+<p>
+  Mostly the unglamorous parts. There is a great deal written about getting an
+  agent to produce code and almost nothing about the operational aftermath.
+</p>
+
+<h2>Writing</h2>
+<div class="empty">
+  <p>Nothing published yet. The first piece is being written — subscribe below
+  and it will land in your inbox.</p>
+</div>
+
+<!--
+  Replace the block above with this list as pieces go out. Newest first.
+
+  <ul class="plain">
+    <li>
+      <a href="/posts/slug.html">
+        <span class="post-date">12 August 2026</span>
+        <span class="post-title">The title of the piece</span>
+      </a>
+    </li>
+  </ul>
+-->
+
+<h2>Get the writing</h2>
+<div class="sub">
+  <p>One email when something new goes out. No cadence promises I won't keep,
+  and nothing else — no sponsorships, no forwarding your address anywhere.</p>
+
+  <!-- TODO: point action= at the list provider's endpoint (Buttondown, Kit,
+       Listmonk...). Until then the form is inert by design — it must not look
+       like it's collecting addresses it isn't actually storing. -->
+  <form class="todo" action="#" method="post" onsubmit="return notWired(event)">
+    <input type="email" name="email" placeholder="you@company.com" required aria-label="Email address">
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="note">Unsubscribe in one click, any time.</p>
+</div>
+
+<h2>Elsewhere</h2>
+<ul class="plain">
+  <li class="todo"><a href="#">LinkedIn</a></li>
+  <li class="todo"><a href="#">GitHub</a></li>
+  <li class="todo"><a href="mailto:#">Email</a></li>
+</ul>
+
+<footer>
+  <span>Montréal, Québec</span>
+  <span>&copy; <span id="yr">2026</span> Jonathan Corbett</span>
+</footer>
+
+</div>
+<script>
+function tg(){
+  const h=document.documentElement;
+  h.dataset.theme = h.dataset.theme==='dark' ? 'light' : 'dark';
+  try{localStorage.setItem('theme',h.dataset.theme);}catch(e){}
+}
+try{
+  const t=localStorage.getItem('theme');
+  if(t) document.documentElement.dataset.theme=t;
+}catch(e){}
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// Placeholder guard: the form has no backend yet. Better to say so than to
+// silently swallow an address someone actually typed.
+function notWired(e){
+  e.preventDefault();
+  alert('The mailing list is not connected yet. Check back shortly.');
+  return false;
+}
+</script>
+</body>
+</html>
